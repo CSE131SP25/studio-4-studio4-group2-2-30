@@ -20,5 +20,46 @@ public class InterpretDrawingFile {
 		File f = new File(chooser.getSelectedFile().getPath());
 		Scanner in = new Scanner(f); //making Scanner with a File
 		
+		//imput
+		String shapeType = in.next();
+	    int redComponent = in.nextInt();
+	    int greenComponent = in.nextInt();
+	    int blueComponent = in.nextInt();
+	    boolean isFilled = in.nextBoolean();
+	    
+	    double parameterOne = in.nextDouble();
+	    double parameterTwo = in.nextDouble();
+	    double parameterThree = in.nextDouble();
+	    double parameterFour = in.nextDouble();
+	    
+	    StdDraw.setPenColor(redComponent,greenComponent,blueComponent);
+	    
+	    if(shapeType.equals("rectangle")) {
+	    	if(isFilled== true) {
+	    	    StdDraw.filledRectangle(parameterOne, parameterTwo, parameterThree, parameterFour);
+	    	    }else {
+	    	    	StdDraw.rectangle(parameterOne, parameterTwo, parameterThree, parameterFour);
+	    	    }
+	    }else if(shapeType.equals("ellipse")){
+	    	if(isFilled== true) {
+	    	    StdDraw.filledEllipse(parameterOne, parameterTwo, parameterThree, parameterFour);
+	    	    }else {
+	    	    	StdDraw.ellipse(parameterOne, parameterTwo, parameterThree, parameterFour);
+	    	    }
+	    	
+	    }else if(shapeType.equals("triangle")){
+	    	double parameterFive = in.nextDouble();
+	    	double parameterSix = in.nextDouble();
+	    	double [] X= {parameterOne, parameterTwo, parameterThree};
+    		double [] Y= {parameterFour, parameterFive, parameterSix};
+    		
+	    	if(isFilled== true) {
+	    		 StdDraw.filledPolygon(X,Y);
+	    	    }else {
+	    	    	StdDraw.polygon(X,Y);
+	    	    	
+	    	    }
+	    }
+	    
 	}
 }
